@@ -15,10 +15,10 @@ class CreateBerkasTable extends Migration
     {
         Schema::create('berkas', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('daftar_sub_id');
             $table->unsignedBigInteger('pertanyaan_id');
             $table->text('prog_evaluasi')->nullable();
             $table->text('keterangan')->nullable();
-            $table->text('bukti')->nullable();
             $table->string('file')->nullable();
             $table->timestamps();
 

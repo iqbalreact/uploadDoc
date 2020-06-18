@@ -1,7 +1,6 @@
 <!-- Main sidebar -->
 <div class="sidebar sidebar-main">
     <div class="sidebar-content">
-
         <!-- User menu -->
         <div class="sidebar-user">
             <div class="category-content">
@@ -28,12 +27,12 @@
                     <li class="nav-item nav-item-submenu">
                         <a href="#" class="nav-link"><i class="icon-copy"></i> <span>Upload Dokumen Proses</span></a>
                         <ul class="nav nav-group-sub" data-submenu-title="Layouts" style="display: none;">
-                            <li class="nav-item"><a href="{{url('/')}}"><span>MANAJEMEN PERUBAHAN</span></a></li>
-                            <li class="nav-item"><a href="{{url('/')}}"><span>PENATAAN TATALAKSANA</span></a></li>
-                            <li class="nav-item"><a href="{{url('/')}}"><span>PENATAAN SISTEM MANAJEMEN SDM</span></a></li>
-                            <li class="nav-item"><a href="{{url('/')}}"><span>PENGUATAN AKUNTABILITAS</span></a></li>
-                            <li class="nav-item"><a href="{{url('/')}}"><span>PENGUATAN PENGAWASAN</span></a></li>
-                            <li class="nav-item"><a href="{{url('/')}}"><span>PENINGKATAN KUALITAS PELAYANAN PUBLIK</span></a></li>
+                            <li class="nav-item"><a href="{{url('/p1')}}"><span>MANAJEMEN PERUBAHAN</span></a></li>
+                            <li class="nav-item"><a href="{{url('/p2')}}"><span>PENATAAN TATALAKSANA</span></a></li>
+                            <li class="nav-item"><a href="{{url('/p3')}}"><span>PENATAAN SISTEM MANAJEMEN SDM</span></a></li>
+                            <li class="nav-item"><a href="{{url('/p4')}}"><span>PENGUATAN AKUNTABILITAS</span></a></li>
+                            <li class="nav-item"><a href="{{url('/p5')}}"><span>PENGUATAN PENGAWASAN</span></a></li>
+                            <li class="nav-item"><a href="{{url('/p6')}}"><span>PENINGKATAN KUALITAS PELAYANAN PUBLIK</span></a></li>
                         </ul>
                     </li>
                 </ul>
