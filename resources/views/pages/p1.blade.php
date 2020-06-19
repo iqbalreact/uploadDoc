@@ -33,17 +33,6 @@
         <div class="panel-body">
             <div class="row">
                 <div class="form-group row">
-                    <label class="col-form-label col-lg-2">Penilaian</label>
-                    <div class="col-lg-10">
-                        <select class="form-control" name="pertanyaan_id">
-                            <option value="">Pilih</option>
-                            @foreach ($p1 as $item)
-                            <option value="{{$item->pertanyaans_id}}">{{$item->daftar_pertanyaan}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group row">
                     <label class="col-form-label col-lg-2">Jenis</label>
                     <div class="col-lg-10">
                         <select class="form-control" name="daftar_sub_id">
@@ -54,6 +43,18 @@
                         </select>
                     </div>
                 </div>
+                <div class="form-group row">
+                    <label class="col-form-label col-lg-2">Penilaian</label>
+                    <div class="col-lg-10">
+                        <select class="form-control" name="pertanyaan_id">
+                            <option value="">Pilih</option>
+                            @foreach ($p1 as $item)
+                            <option value="{{$item->pertanyaans_id}}">{{$item->daftar_pertanyaan}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                
                 <div class="form-group row">
                     <label class="col-form-label col-lg-2">Program Evaluasi</label>
                     <div class="col-lg-10">

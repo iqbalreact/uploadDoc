@@ -14,8 +14,116 @@ use DB;
 
 class UserController extends Controller
 {
+    public function user() {
+        $p1 = DB::table('berkas')
+            ->join('pertanyaans', 'berkas.pertanyaan_id', '=', 'pertanyaans.id')
+            ->join('daftar_subs', 'daftar_subs.id', '=', 'berkas.daftar_sub_id')
+            ->join('sub_proses', 'daftar_subs.sub_proses_id', '=', 'sub_proses.id')
+            ->orderBy('daftar_subs.id')
+            ->where('sub_proses.nama_sub', 'MANAJEMEN PERUBAHAN')
+            ->get()
+            ->groupBy('nama_daftar');
+        $p2 = DB::table('berkas')
+            ->join('pertanyaans', 'berkas.pertanyaan_id', '=', 'pertanyaans.id')
+            ->join('daftar_subs', 'daftar_subs.id', '=', 'berkas.daftar_sub_id')
+            ->join('sub_proses', 'daftar_subs.sub_proses_id', '=', 'sub_proses.id')
+            ->orderBy('daftar_subs.id')
+            ->where('sub_proses.nama_sub', 'PENATAAN TATALAKSANA')
+            ->get()
+            ->groupBy('nama_daftar');
+            
+        $p3 = DB::table('berkas')
+            ->join('pertanyaans', 'berkas.pertanyaan_id', '=', 'pertanyaans.id')
+            ->join('daftar_subs', 'daftar_subs.id', '=', 'berkas.daftar_sub_id')
+            ->join('sub_proses', 'daftar_subs.sub_proses_id', '=', 'sub_proses.id')
+            ->orderBy('daftar_subs.id')
+            ->where('sub_proses.nama_sub', 'PENATAAN SISTEM MANAJEMEN SDM')
+            ->get()
+            ->groupBy('nama_daftar');
+
+        $p4 = DB::table('berkas')
+            ->join('pertanyaans', 'berkas.pertanyaan_id', '=', 'pertanyaans.id')
+            ->join('daftar_subs', 'daftar_subs.id', '=', 'berkas.daftar_sub_id')
+            ->join('sub_proses', 'daftar_subs.sub_proses_id', '=', 'sub_proses.id')
+            ->orderBy('daftar_subs.id')
+            ->where('sub_proses.nama_sub', 'PENGUATAN AKUNTABILITAS')
+            ->get()
+            ->groupBy('nama_daftar');
+
+        $p5 = DB::table('berkas')
+            ->join('pertanyaans', 'berkas.pertanyaan_id', '=', 'pertanyaans.id')
+            ->join('daftar_subs', 'daftar_subs.id', '=', 'berkas.daftar_sub_id')
+            ->join('sub_proses', 'daftar_subs.sub_proses_id', '=', 'sub_proses.id')
+            ->orderBy('daftar_subs.id')
+            ->where('sub_proses.nama_sub', 'PENGUATAN PENGAWASAN')
+            ->get()
+            ->groupBy('nama_daftar');
+            
+        $p6 = DB::table('berkas')
+            ->join('pertanyaans', 'berkas.pertanyaan_id', '=', 'pertanyaans.id')
+            ->join('daftar_subs', 'daftar_subs.id', '=', 'berkas.daftar_sub_id')
+            ->join('sub_proses', 'daftar_subs.sub_proses_id', '=', 'sub_proses.id')
+            ->orderBy('daftar_subs.id')
+            ->where('sub_proses.nama_sub', 'PENINGKATAN KUALITAS PELAYANAN PUBLIK')
+            ->get()
+            ->groupBy('nama_daftar');
+
+        return view('pages.user', compact('p1','p2','p3','p4','p5','p6'));
+    }
+    // public function index() {
+
+    //     $p1 = DB::table('berkas')
+    //         ->join('pertanyaans', 'berkas.pertanyaan_id', '=', 'pertanyaans.id')
+    //         ->join('daftar_subs', 'daftar_subs.id', '=', 'berkas.daftar_sub_id')
+    //         ->join('sub_proses', 'daftar_subs.sub_proses_id', '=', 'sub_proses.id')
+    //         ->orderBy('daftar_subs.id')
+    //         ->where('sub_proses.nama_sub', 'MANAJEMEN PERUBAHAN')
+    //         ->get();
+    //     $p2 = DB::table('berkas')
+    //         ->join('pertanyaans', 'berkas.pertanyaan_id', '=', 'pertanyaans.id')
+    //         ->join('daftar_subs', 'daftar_subs.id', '=', 'berkas.daftar_sub_id')
+    //         ->join('sub_proses', 'daftar_subs.sub_proses_id', '=', 'sub_proses.id')
+    //         ->orderBy('daftar_subs.id')
+    //         ->where('sub_proses.nama_sub', 'PENATAAN TATALAKSANA')
+    //         ->get();
+    //     $p3 = DB::table('berkas')
+    //         ->join('pertanyaans', 'berkas.pertanyaan_id', '=', 'pertanyaans.id')
+    //         ->join('daftar_subs', 'daftar_subs.id', '=', 'berkas.daftar_sub_id')
+    //         ->join('sub_proses', 'daftar_subs.sub_proses_id', '=', 'sub_proses.id')
+    //         ->orderBy('daftar_subs.id')
+    //         ->where('sub_proses.nama_sub', 'PENATAAN SISTEM MANAJEMEN SDM')
+    //         ->get();
+    //     $p4 = DB::table('berkas')
+    //         ->join('pertanyaans', 'berkas.pertanyaan_id', '=', 'pertanyaans.id')
+    //         ->join('daftar_subs', 'daftar_subs.id', '=', 'berkas.daftar_sub_id')
+    //         ->join('sub_proses', 'daftar_subs.sub_proses_id', '=', 'sub_proses.id')
+    //         ->orderBy('daftar_subs.id')
+    //         ->where('sub_proses.nama_sub', 'PENGUATAN AKUNTABILITAS')
+    //         ->get();
+    //     $p5 = DB::table('berkas')
+    //         ->join('pertanyaans', 'berkas.pertanyaan_id', '=', 'pertanyaans.id')
+    //         ->join('daftar_subs', 'daftar_subs.id', '=', 'berkas.daftar_sub_id')
+    //         ->join('sub_proses', 'daftar_subs.sub_proses_id', '=', 'sub_proses.id')
+    //         ->orderBy('daftar_subs.id')
+    //         ->where('sub_proses.nama_sub', 'PENGUATAN PENGAWASAN')
+    //         ->get();
+    //     $p6 = DB::table('berkas')
+    //         ->join('pertanyaans', 'berkas.pertanyaan_id', '=', 'pertanyaans.id')
+    //         ->join('daftar_subs', 'daftar_subs.id', '=', 'berkas.daftar_sub_id')
+    //         ->join('sub_proses', 'daftar_subs.sub_proses_id', '=', 'sub_proses.id')
+    //         ->orderBy('daftar_subs.id')
+    //         ->where('sub_proses.nama_sub', 'PENINGKATAN KUALITAS PELAYANAN PUBLIK')
+    //         ->get();
+
+    //     return view('pages.daftar', compact('p1','p2','p3','p4','p5','p6'));
+
+
+    //     // return view('pages.daftar');
+
+    // }
+
     public function p1() {
-        $daftar_sub = DaftarSub::All();
+        $daftar_sub = DaftarSub::orderBy('id', 'ASC')->get();
         // dd($daftar_sub);
         $p1 = DB::table('pertanyaans')
             ->join('penilaians', 'penilaians.pertanyaans_id', '=', 'pertanyaans.id')
@@ -98,13 +206,17 @@ class UserController extends Controller
 
     }
 
-    
-
-
     public function penilaian() {
         $daftarsubs = DaftarSub::all();
         $pertanyaans = Pertanyaan::all();
         // dd($pertanyaans);
         return view ('user.penilaian', compact('daftarsubs','pertanyaans'));
+    }
+
+    public function openfile($fileId) {
+        $file = Berkas::findOrFail($fileId);
+        $file = public_path(). "/documents/" . $file->document_path;
+        dd($file);
+        // return Response::download($file, 'filename.pdf');
     }
 }

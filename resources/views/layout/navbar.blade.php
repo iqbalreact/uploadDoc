@@ -9,6 +9,7 @@
     </div>
 
     <div class="navbar-collapse collapse" id="navbar-mobile">
+        {{-- <p>Lorem, ipsum.</p> --}}
         <ul class="nav navbar-nav">
             <li><a class="sidebar-control sidebar-main-toggle hidden-xs"><i class="icon-paragraph-justify3"></i></a></li>
         </ul>
@@ -18,14 +19,24 @@
                 <a class="dropdown-toggle" data-toggle="dropdown">
                     <img src="{{asset('../assets/images/image.png')}}" alt="">
                     {{-- admin login name  --}}
-                    <span>Admin</span>
+                    <span>{{ Auth::user()->name }}</span>
                     <i class="caret"></i>
                 </a>
-
                 <ul class="dropdown-menu dropdown-menu-right">
-                    <li><a href="#"><i class="icon-cog5"></i> Ganti Password</a></li>
-                    <li><a href="#"><i class="icon-switch2"></i> Logout</a></li>
+                    <li>
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    </li>
+                    
                 </ul>
+
             </li>
         </ul>
     </div>

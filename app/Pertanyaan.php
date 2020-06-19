@@ -15,6 +15,6 @@ class Pertanyaan extends Model
     public $timesstamps = true;
     public function Penilaian()
     {
-        return $this->hasMany('App\Penilaian');
+        return $this->belongsTo('App\Penilaian');
     }
 }

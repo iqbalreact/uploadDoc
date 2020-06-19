@@ -13,18 +13,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('pages.p1');
+// });
 
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/p1', 'UserController@p1')->name('user-home');
-Route::get('/p2', 'UserController@p2')->name('p2');
-Route::get('/p3', 'UserController@p3')->name('p3');
-Route::get('/p4', 'UserController@p4')->name('p4');
-Route::get('/p5', 'UserController@p5')->name('p5');
-Route::get('/p6', 'UserController@p6')->name('p6');
-Route::get('/addpenilaian', 'UserController@penilaian')->name('penilaian');
+
+Route::group(['middleware'=> ['auth']], function() {
+    Route::group(['prefix'=>'admin'],function(){
+        Route::get('/', 'HomeController@index')->name('admin');
+        Route::get('/dashboard', 'UserController@user')->name('user-home');
+        Route::get('/p1', 'UserController@p1')->name('p1');
+        Route::get('/p2', 'UserController@p2')->name('p2');
+        Route::get('/p3', 'UserController@p3')->name('p3');
+        Route::get('/p4', 'UserController@p4')->name('p4');
+        Route::get('/p5', 'UserController@p5')->name('p5');
+        Route::get('/p6', 'UserController@p6')->name('p6');
+    });
+});
+
+Route::get('/', 'HomeController@index')->name('user-home');
+Route::get('/dashboard', 'UserController@user')->name('user-home');
