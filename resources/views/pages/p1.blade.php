@@ -12,13 +12,21 @@
 
 @endsection
 
-@section('breadcrumb')
-
-@endsection
-
 @section('panel-body')
 
-<div class="panel panel-flat">
+@if (session('success'))
+    <div class="alert bg-success alert-styled-right">
+        <button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
+        <span class="text-semibold">Great!</span> {{session('success')}}
+    </div>
+@elseif (session('error'))
+    <div class="alert bg-danger alert-styled-right">
+        <button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
+        <span class="text-semibold">{{session('error')}} !</span> 
+    </div>
+@endif
+
+<div class="panel panel-flat">    
     <div class="panel-heading">
         <h5 class="panel-title">Manajemen Perubahan<a class="heading-elements-toggle"><i class="icon-more"></i></a></h5>
         <div class="heading-elements">
@@ -35,7 +43,7 @@
                 <div class="form-group row">
                     <label class="col-form-label col-lg-2">Jenis</label>
                     <div class="col-lg-10">
-                        <select class="form-control" name="daftar_sub_id">
+                        <select class="form-control" name="daftar_sub_id" required>
                             <option value="">Pilih</option> 
                             @foreach ($daftar_sub as $sub_name)
                             <option value="{{$sub_name->id}}">{{$sub_name->nama_daftar}}</option>  
@@ -46,7 +54,7 @@
                 <div class="form-group row">
                     <label class="col-form-label col-lg-2">Penilaian</label>
                     <div class="col-lg-10">
-                        <select class="form-control" name="pertanyaan_id">
+                        <select class="form-control" name="pertanyaan_id" required>
                             <option value="">Pilih</option>
                             @foreach ($p1 as $item)
                             <option value="{{$item->pertanyaans_id}}">{{$item->daftar_pertanyaan}}</option>
@@ -58,19 +66,19 @@
                 <div class="form-group row">
                     <label class="col-form-label col-lg-2">Program Evaluasi</label>
                     <div class="col-lg-10">
-                        <textarea rows="3" cols="3" class="form-control" name="prog_evaluasi" placeholder="Program Evaluasi"></textarea>
+                        <textarea rows="3" cols="3" class="form-control" name="prog_evaluasi" placeholder="Program Evaluasi" required></textarea>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-form-label col-lg-2">Keterangan</label>
                     <div class="col-lg-10">
-                        <textarea rows="3" cols="3" class="form-control" name="keterangan" placeholder="Keterangan"></textarea>
+                        <textarea rows="3" cols="3" class="form-control" name="keterangan" placeholder="Keterangan" required></textarea>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-form-label col-lg-2">Bukti Dokumen</label>
                     <div class="col-lg-10">
-                        <input type="file" name="file" class="form-control h-auto">
+                        <input type="file" name="file" class="form-control h-auto" required>
                     </div>
                 </div>
             </div>          

@@ -28,8 +28,7 @@ class BerkasController extends Controller
             $p1->file = $request->file('file')->getClientOriginalName();
         }
         $p1->save();
-        return redirect()->back()->with('success', 'Berhasil menambahkan Penyakit p1');
-
+        return redirect('admin/p1')->with('success', 'Berhasil Upload');
     }
 
     public function updateBerkas(Request $request) {
