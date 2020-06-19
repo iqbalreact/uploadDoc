@@ -41,6 +41,7 @@
                             <th>Program Evaluasi</th>
                             <th>Keterangan</th>
                             <th>File</th>
+                            <th>Hapus</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -54,6 +55,7 @@
                             <td>
                                 <a href="{{ url('/documents/'.$item->file) }}" class="btn btn-primary" target="_blank">Open</a>
                             </td>
+                            <td>Hapus</td>
                         </tr>
                         @endforeach
                     </tbody>
