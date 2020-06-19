@@ -1,7 +1,7 @@
 @extends('layout/master')
 
 @section('title')
-    <title>Dashboard - Daftar Dokument</title>
+    <title>Dashboard - Daftar Dokumen</title>
 @endsection
 
 @section('page-title')
