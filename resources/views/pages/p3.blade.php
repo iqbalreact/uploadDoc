@@ -67,7 +67,7 @@
                     </div>
                 </div>
                
-                <div class="form-group row">
+                {{-- <div class="form-group row">
                     <label class="col-form-label col-lg-2">Program Evaluasi</label>
                     <div class="col-lg-10">
                         <textarea rows="3" cols="3" class="form-control" name="prog_evaluasi" placeholder="Program Evaluasi" required></textarea>
@@ -78,7 +78,7 @@
                     <div class="col-lg-10">
                         <textarea rows="3" cols="3" class="form-control" name="keterangan" placeholder="Keterangan" required></textarea>
                     </div>
-                </div>
+                </div> --}}
                 <div class="form-group row">
                     <label class="col-form-label col-lg-2">Bukti Dokumen</label>
                     <div class="col-lg-10">

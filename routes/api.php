@@ -54,4 +54,5 @@ Route::delete('/pertanyaan/{id}', 'PertanyaanController@deletepertanyaan')->name
 Route::get('/berkas', 'BerkasController@index')->name('index');
 Route::post('/addberkas', 'BerkasController@addBerkas')->name('addberkas');
 Route::post('/berkas', 'BerkasController@updateBerkas')->name('updateberkas');
-Route::delete('/berkas/{id}', 'BerkasController@deleteBerkas')->name('deleteberkas');
+// Route::delete('/berkas/{id}', 'BerkasController@deleteBerkas')->name('deleteberkas');
+Route::post('/deleteberkas', 'BerkasController@deleteBerkas')->name('deleteberkas');

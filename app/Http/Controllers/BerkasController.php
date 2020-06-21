@@ -4,13 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Berkas;
+use Illuminate\Support\Facades\File;
 use DB;
 
 class BerkasController extends Controller
 {
     //
     public function index() {
-
         return Berkas::all();
         
     }
@@ -42,11 +42,15 @@ class BerkasController extends Controller
         return "Data Berhasil Di DiUbah";
     }
 
-    public function deleteBerkas($id) {
-        $proses = Berkas::find($id);
-        $proses->delete();
+    public function deleteBerkas(Request $id) {
         
-        return "Data Berhasil Dihapus";
-        
+        $data = Berkas::find($id);
+        $directory = 'documents/'.$data[0]->file;
+        File::delete($directory);
+        $data->each->delete();
+        return redirect()->back();        
     }
+
+
+
 }

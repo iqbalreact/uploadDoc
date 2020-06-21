@@ -24,7 +24,7 @@
                 <ul class="navigation navigation-main navigation-accordion">
                     <li class="navigation-header"><span>Main</span> <i class="icon-menu" title="Main pages"></i></li>
                     <li><a href="{{url('/dashboard')}}"><i class="icon-home4"></i> <span>Daftar Dokumen</span></a></li>
-                   
+                    
                     @if (Auth::user()->name === 'Guest')
                     
                     @else
@@ -39,6 +39,9 @@
                             <li class="nav-item"><a href="{{url('/admin/p6')}}"><span>PENINGKATAN KUALITAS PELAYANAN PUBLIK</span></a></li>
                         </ul>
                     </li>
+                    
+                    <li><a href="{{url('/admin/daftar-berkas')}}"><i class="icon-home4"></i> <span>Kelola Dokumen</span></a></li>
+
                     @endif
 
                 </ul>

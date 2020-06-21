@@ -28,6 +28,7 @@
                   <th>Kode</th>
                   <th colspan="2">Sub Pengungkit</th>
                   <th>Lampiran Link(Document)</th>
+                  <th>Aksi</th>
                </tr>
             </thead>
             <tbody>
@@ -35,7 +36,7 @@
                     <tr style="background-color:#ada795;font-weight:bold">
                        <td>1. {{$loop->iteration}}</td>
                        </td>
-                       <td colspan="3">{{$key}}</td>
+                       <td colspan="4">{{$key}}</td>
                     </tr>
                     @foreach ($item as $key2 => $point)
                     <tr>
@@ -44,9 +45,14 @@
                         <td>
                             {{$point->daftar_pertanyaan}}
                         <td>
-                            <a href="{{ url('/documents/'.$point->file) }}" target="_blank"><button class="btn btn-block btn-sm btn-info klikguest" data-idsub="2" id="klikguest"><i class="ace-icon fa fa-file-text-o bigger-1"></i>
-                                <span>File</span></button>
+                            <a href="{{ url('/documents/'.$point->file) }}" target="_blank" class="btn btn-block btn-sm btn-info klikguest">
+                              Open
                             </a>
+                        </td>
+                        <td>     
+                           <a href="#modalHapusMhs" data-idmhs="{{$point->id}}" class="btn btn-danger" data-toggle="modal" id="tombol-hapus-mhs" data-target="#modalHapusMhs" class="btn btn-danger btn-sm" title="Hapus" data-idmhs="">
+                              Hapus
+                           </a>
                         </td>
                     </tr>
                     @endforeach
@@ -286,6 +292,29 @@
           </table>
        </div>
     </div>
+</div>
+
+<div class="modal fade" id="modalHapusMhs" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+   <div class="modal-dialog" role="document">
+       <div class="modal-content">
+           <div class="modal-header">
+               <h5 class="modal-title">Hapus Dokumen</h5>
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                   <span aria-hidden="true">&times;</span>
+               </button>
+           </div>
+           <div class="modal-body">
+               <form action="{{route('deleteberkas')}}" method="POST">
+                   @csrf
+                   <input type="hidden" name="id_mahasiswa" id="id-mahasiswa">
+                   <p class="text-center mt-3">Apakah Anda Yakin Akan Menghapus ?</p>
+               </div>
+               <div class="modal-footer">
+                   <button type="submit" class="btn btn-danger">Yakin</button>
+               </div>
+           </form>
+       </div>
+   </div>
 </div>
 
 @endsection

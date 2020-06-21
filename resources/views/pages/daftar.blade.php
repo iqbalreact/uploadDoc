@@ -54,8 +54,8 @@
                             <td>{{$item->keterangan}}</td>
                             <td>
                                 <a href="{{ url('/documents/'.$item->file) }}" class="btn btn-primary" target="_blank">Open</a>
+                                {{-- <a href="#modalHapusMhs" data-toggle="modal" id="tombol-hapus-mhs" data-target="#modalHapusMhs" class="btn btn-danger btn-sm" title="Hapus" data-idmhs="{{$item->id}}"><i class="icon-trash"></i></a> --}}
                             </td>
-                            <td>Hapus</td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -272,7 +272,6 @@
                             <td>{{$item->prog_evaluasi}}</td>
                             <td>{{$item->keterangan}}</td>
                             <td>
-                                {{-- <a href="{{ URL::asset('public/documents/$item->file') }}"></a> --}}
                                 <a href="{{ url('/documents/'.$item->file) }}" class="btn btn-primary" target="_blank">Open</a>
                             </td>
                         </tr>
@@ -284,4 +283,30 @@
         </div>
     </div>
 </div>
+
+
+<div class="modal fade" id="modalHapusMhs" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Hapus Mahasiswa</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="#" method="POST">
+                    @csrf
+                    <input type="hidden" name="id_mahasiswa" id="id-mahasiswa">
+                    <p class="text-center mt-3">Apakah Anda Yakin Akan Menghapus ?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-danger">Yakin</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
 @endsection

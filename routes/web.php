@@ -18,8 +18,13 @@ Route::get('/login', function () {
 });
 
 
+
+
 Auth::routes();
 
+
+Route::get('/baru', 'UserController@home')->name('user-page');
+Route::post('/daftarberkas', 'UserController@cekberkas')->name('cekberkas');
 
 Route::group(['middleware'=> ['auth']], function() {
     Route::group(['prefix'=>'admin'],function(){
@@ -33,6 +38,8 @@ Route::group(['middleware'=> ['auth']], function() {
         Route::get('/p6', 'UserController@p6')->name('p6');
     });
 });
+
+
 
 Route::get('/', 'HomeController@index')->name('user-home');
 Route::get('/dashboard', 'UserController@user')->name('user-home');

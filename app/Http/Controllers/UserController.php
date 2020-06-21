@@ -8,12 +8,18 @@ use App\SubProses;
 use App\DaftarSub;
 use App\Pertanyaan;
 use App\Penilaian;
+use App\Berkas;
 use DB;
 
 
 
 class UserController extends Controller
 {
+
+    public function home() {
+        return view ('pages.home');
+    }
+
     public function user() {
         $p1 = DB::table('berkas')
             ->join('pertanyaans', 'berkas.pertanyaan_id', '=', 'pertanyaans.id')
@@ -70,7 +76,6 @@ class UserController extends Controller
 
         return view('pages.user', compact('p1','p2','p3','p4','p5','p6'));
     }
-
 
     public function p1() {
         $daftar_sub = DaftarSub::orderBy('id', 'ASC')->get();
@@ -163,10 +168,29 @@ class UserController extends Controller
         return view ('user.penilaian', compact('daftarsubs','pertanyaans'));
     }
 
-    public function openfile($fileId) {
-        $file = Berkas::findOrFail($fileId);
-        $file = public_path(). "/documents/" . $file->document_path;
-        dd($file);
-        // return Response::download($file, 'filename.pdf');
+    public function kelola() {
+        $berkas = DB::table('berkas')
+        ->join('pertanyaans', 'berkas.pertanyaan_id', '=', 'pertanyaans.id')
+        ->select('berkas.*', 'pertanyaans.daftar_pertanyaan')
+        ->get();
+
+        return view ('pages.kelola', compact('berkas'));
     }
+
+    public function cekberkas (Request $id) {
+        // dd($id);
+        $p1 = DB::table('berkas')
+        ->join('pertanyaans', 'berkas.pertanyaan_id', '=', 'pertanyaans.id')
+        ->join('daftar_subs', 'daftar_subs.id', '=', 'berkas.daftar_sub_id')
+        ->join('sub_proses', 'daftar_subs.sub_proses_id', '=', 'sub_proses.id')
+        ->where('sub_proses.id', $id->id)
+        ->get()
+        ->groupBy('nama_sub');
+        // dd($p1);
+        
+        return view ('pages.list', compact('p1'));
+    }
+
+
+
 }
